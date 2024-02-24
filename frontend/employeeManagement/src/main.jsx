@@ -6,16 +6,19 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 import InitialPage from './components/InitialPage.jsx'
 import AdminLogin from './components/Admin/AdminLogin.jsx'
 import SupervisorLogin from './components/Supervisor/SupervisorLogin.jsx'
+import PageLayout from './components/Layout/PageLayout.jsx'
+import AdminDashboard from './components/Admin/AdminDashboard.jsx'
+
 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <InitialPage/>,
+    element: <PageLayout />,
     children: [
       {
         path:'',
-        element: <AdminLogin />
+        element: <InitialPage />
       },
       {
         path:'adminLogin',
@@ -24,13 +27,16 @@ const router = createBrowserRouter([
       {
         path:'supervisorLogin',
         element: <SupervisorLogin />
-      }
+      },
+      {
+        path:'adminDashboard',
+        element: <AdminDashboard />
+      },
     ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+    
     <RouterProvider  router={router}/>
-  </React.StrictMode>,
 )
