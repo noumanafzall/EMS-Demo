@@ -9,6 +9,9 @@ export default {
       backgroundColor: {
         'custom-bg':'#6a4db5',
       },
+      fontFamily: {
+        'manrope': ['Manrope', 'sans-serif'],
+      },
 
     },
   },

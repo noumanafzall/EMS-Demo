@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function AdminLogin() {
   return (
-    <div className='bg-custom-bg w-full h-[603px]'>
+    <div className='bg-custom-bg w-full h-screen'>
 
       <span className='bg-red-300 w-full text-3xl border-b border-gray-900 flex justify-center p-[10px]'>Administration</span>
 

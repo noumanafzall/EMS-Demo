@@ -8,6 +8,7 @@ import AdminLogin from './components/Admin/AdminLogin.jsx'
 import SupervisorLogin from './components/Supervisor/SupervisorLogin.jsx'
 import PageLayout from './components/Layout/PageLayout.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
+import SupervisorDashboard from './components/Supervisor/SuperVisorDashboard.jsx'
 
 
 
@@ -28,15 +29,20 @@ const router = createBrowserRouter([
         path:'supervisorLogin',
         element: <SupervisorLogin />
       },
-      {
-        path:'adminDashboard',
-        element: <AdminDashboard />
-      },
     ]
-  }
+  } ,
+  {
+    path:'/adminDashboard',
+    element: <AdminDashboard />
+  },
+  {
+    path:'/supervisorDashboard',
+    element: <SupervisorDashboard />
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     
     <RouterProvider  router={router}/>
+    // <App />
 )

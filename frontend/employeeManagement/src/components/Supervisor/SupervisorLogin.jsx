@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import {FaUser, FaLock, FaEye} from 'react-icons/fa'
 import {FaMapLocationDot } from "react-icons/fa6";
 import {Link} from 'react-router-dom'
-import LocationList from '../MinorComponents/LocationList';
 import { useState } from 'react';
 import axios from 'axios'
 
@@ -72,7 +71,7 @@ function SupervisorLogin() {
           </div>
 
           <div className=" flex items-center gap-10">
-              <Link to='/adminDashboard' className=" bg-red-500 px-8 py-3 rounded-lg font-bold hover:bg-blue-400 duration-300">
+              <Link to='/supervisorDashboard' className=" bg-red-500 px-8 py-3 rounded-lg font-bold hover:bg-blue-400 duration-300">
                 LOGIN
               </Link>
 
