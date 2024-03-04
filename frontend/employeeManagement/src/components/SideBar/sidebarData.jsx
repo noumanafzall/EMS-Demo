@@ -11,42 +11,42 @@ export const adminData = [
     {
         label : 'Dashboard',
         icon : <GoHomeFill />,
-        to : "/adminLogin"
+        to : "/adminDashboard"
     },
     {
         label : 'Employees',
         icon : <MdPeopleAlt /> ,
-        to : "/supervisorLogin"
+        to : "/admin/employees"
     },
     {
         label : 'Attendance',
         icon : <VscChecklist />,
-        to : "/supervisorLogin"
+        to : "/admin/attendace"
     },
     {
         label : 'Analytics',
         icon : <MdAnalytics />,
-        to : "/supervisorLogin"
+        to : "/admin/analytics"
     },
     {
         label : 'Recruitment',
         icon : <FaUserTie /> ,
-        to : "/supervisorLogin"
+        to : "/admin/recruitment"
     },
     {
         label : 'Weapons',
         icon : <GiPistolGun /> ,
-        to : "/supervisorLogin"
+        to : "/admin/weapons"
     },
     {
         label : 'Revenue',
         icon : <GiCash /> ,
-        to : "/supervisorLogin"
+        to : "/admin/revenue"
     },
     {
         label : 'Payrolls',
         icon : <RiExchangeDollarLine /> ,
-        to : "/supervisorLogin"
+        to : "/admin/payrolls"
     },
 ]
 
@@ -56,7 +56,22 @@ const supervisorData = [
         label : 'Dashboard',
         icon : <GoHomeFill />,
         to : "/supervisorLogin"
-    }
+    },
+    {
+        label : 'Employees',
+        icon : <MdPeopleAlt /> ,
+        to : "/admin/employees"
+    },
+    {
+        label : 'Attendance',
+        icon : <VscChecklist />,
+        to : "/supervisorLogin"
+    },
+    {
+        label : 'Weapons',
+        icon : <GiPistolGun /> ,
+        to : "/supervisorLogin"
+    },
 ]
 
 export default supervisorData

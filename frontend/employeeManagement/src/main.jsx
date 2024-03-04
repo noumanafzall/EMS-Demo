@@ -9,7 +9,8 @@ import SupervisorLogin from './components/Supervisor/SupervisorLogin.jsx'
 import PageLayout from './components/Layout/PageLayout.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 import SupervisorDashboard from './components/Supervisor/SuperVisorDashboard.jsx'
-
+import AdminEmployees from './components/Employees/AdminEmployees.jsx'
+import AdminAttendancePage from './components/Attendance/AdminAttendancePage.jsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
   {
     path:'/adminDashboard',
     element: <AdminDashboard />
+  },
+  {
+    path:'/admin/employees',
+    element: <AdminEmployees />
+  },
+  {
+    path:'/admin/attendace',
+    element: <AdminAttendancePage />
   },
   {
     path:'/supervisorDashboard',

@@ -1,16 +1,7 @@
-import express from "express";
-
-const app = express()
-
 app.get('/', (req, res) => {
     res.send('Server is ready')
 })
 
-
- app.get('/api/locations', (req, res) => {
-    const locations = [ 'Malir','Bazaar','k3','k9']
-    res.send(locations)
- })
 
  app.get('/api/employees', (req, res) => {
     const employees = [
@@ -70,39 +61,7 @@ app.get('/', (req, res) => {
             phone: '034514081947',
             role:'supervisor'
         },
-        {
-            id: 123151,
-            name: 'Araib',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor'
-        },
-        {
-            id: 123151,
-            name: 'Araib',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor'
-        },
-        {
-            id: 123151,
-            name: 'Araib',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor'
-        },
-        {
-            id: 123151,
-            name: 'Araib',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor'
-        },
     ]
     res.send(employees)
  })
-const port = process.env.PORT || 3000
-
-app.listen( port, () => {
-    console.log(`Serving At  http://localhost:${port}`)
-})
+ const port = process.env.PORT || 3000
