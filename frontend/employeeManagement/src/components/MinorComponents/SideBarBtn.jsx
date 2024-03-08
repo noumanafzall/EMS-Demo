@@ -1,21 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+function SideBarBtn({ label, icon, to }) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
 
-function SideBarBtn({label, icon, to}) {
   return (
     <Link className='' to={to}>
-
-      <div className='bg-[#3e365a] text-white font-manrope text-md w-[170px] h-[40px] border-solid border-gray-500 border-2 rounded-md shadow-md my-2 flex items-center px-[10px] mt-2 hover:bg-[#ef2253] '>
-        {icon && <span className='mr-2 fill-current text-2xl '>{icon}
-        </span>}
+      <div
+        className={`bg-[#3e365a] text-white font-manrope text-md w-[100%] h-[50px] flex items-center px-[10px] hover:bg-[#ef2253] ${
+          isActive ? 'border-l-8 border-[#ef2253]' : ''
+        }`}
+      >
+        {icon && <span className='mr-2 fill-current text-2xl'>{icon}</span>}
         {label}
       </div>
-
-
-
     </Link>
-  )
+  );
 }
 
-export default SideBarBtn
+export default SideBarBtn;

@@ -11,6 +11,11 @@ import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 import SupervisorDashboard from './components/Supervisor/SuperVisorDashboard.jsx'
 import AdminEmployees from './components/Employees/AdminEmployees.jsx'
 import AdminAttendancePage from './components/Attendance/AdminAttendancePage.jsx'
+import AdminPayroll from './components/Payrolls/AdminPayroll.jsx'
+import AdminRecruitment from './components/Recruitment/AdminRecruitment.jsx'
+import AdminRevenue from './components/Revenue/AdminRevenue.jsx'
+import AdminWeapons from './components/Weapons/AdminWeapons.jsx'
+import AdminAnalytics from './components/Analytics/AdminAnalytics.jsx'
 
 
 const router = createBrowserRouter([
@@ -43,6 +48,26 @@ const router = createBrowserRouter([
   {
     path:'/admin/attendace',
     element: <AdminAttendancePage />
+  },
+  {
+    path:'/admin/payrolls',
+    element: <AdminPayroll />
+  },
+  {
+    path:'/admin/recruitment',
+    element: <AdminRecruitment />
+  },
+  {
+    path:'/admin/revenue',
+    element: <AdminRevenue />
+  },
+  {
+    path:'/admin/weapons',
+    element: <AdminWeapons />
+  },
+  {
+    path:'/admin/analytics',
+    element: <AdminAnalytics />
   },
   {
     path:'/supervisorDashboard',

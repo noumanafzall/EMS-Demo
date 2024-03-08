@@ -4,8 +4,8 @@ import { TbLogout2 } from "react-icons/tb";
 
 function SideBarRoleBtn({role, icon}) {
   return (
-    <div>
-        <div className='bg-[#3e365a] leading-20 w-[170px] h-[100px] border-solid border-gray-500 border-2 rounded-md shadow-md my-2 flex flex-col items-center justify-between px-[10px]'>
+    
+      <div className='bg-[#3e365a] leading-20 w-[100%] h-[100px] border-solid border-gray-500  shadow-md my-2 flex flex-col items-center justify-between px-[10px]'>
           
           <span className='text-white font-manrope text-xl leading-20 mt-[10px]'>{role}</span>
            
@@ -17,8 +17,7 @@ function SideBarRoleBtn({role, icon}) {
 
           </div>
             
-        </div>
-    </div>
+      </div>
   )
 }
 
