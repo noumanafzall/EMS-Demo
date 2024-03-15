@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../SideBar/Sidebar';
 import { adminData } from '../SideBar/sidebarData';
-import { FaEllipsisVertical } from "react-icons/fa6"
+import { MdDelete } from "react-icons/md"
+import { FaEdit, FaInfoCircle } from "react-icons/fa"
+import EmployeeDeleteModal from '../MinorComponents/EmployeeDeleteModal';
+
+
 
 function AdminEmployees() {
   const [employeeData, setEmployeeData] = useState([]);
@@ -19,9 +23,17 @@ function AdminEmployees() {
 
     fetchData();
   }, []); 
+
+  const [openModal, setOpenModal] = useState(false)
+
+  
+
   return (
-    <div className='flex bg-gradient-to-br from-[#b33854] via-[#a52140] to-[#231e3b] h-[100vh]'>
+    <>
+    <div className='flex bg-gradient-to-br #231e3b from-[#231e3b] via-[#4d3874] to-[#b33854] h-[100vh]'>
+
       <Sidebar list={adminData} role='Admin' />
+
       <div className='h-[100vh] w-[80%] flex flex-col justify-center items-center rounded-r-md text-white'>
 
         <div className='flex items-center justify-between w-[100%] mr-[10px] '>
@@ -36,7 +48,7 @@ function AdminEmployees() {
             <span className="w-[20%]">ID</span>
             <span className="w-[30%]">Name</span>
             <span className="w-[20%]">Department</span>
-            <span className="w-[20%]">Phone#</span>
+            <span className="w-[20%]"></span>
           </div>
 
           
@@ -46,14 +58,22 @@ function AdminEmployees() {
               <span className="w-[20%]">{employee.id}</span>
               <span className="w-[30%]">{employee.firstname} {employee.lastName}</span>
               <span className="w-[20%]">{employee.department}</span>
-              <span className="w-[20%]">{employee.phone}</span>
-              <span className='hover:bg-[#ef2253] cursor-pointer border-2 rounded-[4px] border-solid border-gray-500 shadow-md  '><FaEllipsisVertical /></span>
+              <span className="w-[20%] flex items-center justify-between ">
+                <span className='hover:cursor-pointer'><FaEdit /></span>
+                <span className='hover:cursor-pointer'><FaInfoCircle /></span>
+                <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true)}}><MdDelete /></span>
+              </span>
               
             </div>
           ))}
-        </div>
+
+        </div> 
+        
       </div>
+
+    { openModal && <EmployeeDeleteModal closeModal={setOpenModal}/>}
     </div>
+    </>
   );
 }
 

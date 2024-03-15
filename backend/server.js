@@ -44,7 +44,8 @@ app.get('/', (req, res) => {
             lastName : 'Araib',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location:"Malir"
         },
         {
             id: 126351,
