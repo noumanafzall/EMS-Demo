@@ -1,7 +1,14 @@
 import React from 'react'
 import { MdClose } from "react-icons/md"
 
-function EmployeeDeleteModal({closeModal}) {
+function EmployeeDeleteModal({closeModal, handleDelete, employeeId }) {
+
+    const confirmDelete = () => {
+        handleDelete(employeeId);
+        closeModal(false);
+    }
+    
+
   return (
     <>
         <div className='w-full h-screen backdrop-blur-[2px] fixed flex justify-center items-center'>
@@ -21,7 +28,7 @@ function EmployeeDeleteModal({closeModal}) {
                 <div className='flex justify-center items-center pb-16 '>
 
                     <button className='w-48 h-12 m-2 rounded-lg bg-red-600 text-white text-lg cursor-pointer' onClick={() => closeModal(false)} >Cancel</button>
-                    <button className='w-48 h-12 m-2 rounded-lg bg-blue-500 text-white text-lg cursor-pointer'>Continue</button>
+                    <button className='w-48 h-12 m-2 rounded-lg bg-blue-500 text-white text-lg cursor-pointer' onClick={() => confirmDelete()}>Continue</button>
 
                 </div>
 

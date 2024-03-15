@@ -18,9 +18,13 @@ app.get('/', (req, res) => {
             id: 123515,
             firstname : 'Araib',
             lastName : 'Khan',
-            department: 'supervision',
+            department: 'accounts',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
             id: 123512,
@@ -28,7 +32,11 @@ app.get('/', (req, res) => {
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
             id: 123351,
@@ -36,7 +44,11 @@ app.get('/', (req, res) => {
             lastName : '',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
             id: 123651,
@@ -45,79 +57,118 @@ app.get('/', (req, res) => {
             department: 'supervision',
             phone: '034514081947',
             role:'supervisor',
-            location:"Malir"
+            location:"Malir",
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 126351,
+            id: 126352,
             firstname: 'Muhammad',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123851,
+            id: 123853,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123154,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123155,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123136,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123156,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123157,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 123151,
+            id: 123158,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
-            id: 189671,
+            id: 189679,
             firstname: 'Araib',
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
             id: 123181,
@@ -125,7 +176,11 @@ app.get('/', (req, res) => {
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
         {
             id: 128991,
@@ -133,7 +188,11 @@ app.get('/', (req, res) => {
             lastName : 'Niazi',
             department: 'supervision',
             phone: '034514081947',
-            role:'supervisor'
+            role:'supervisor',
+            location: 'Saddar',
+            age: 30,
+            address:'Block B-34 gulshan',
+            dateofjoining: '3/27/2023'
         },
     ]
     res.send(employees)

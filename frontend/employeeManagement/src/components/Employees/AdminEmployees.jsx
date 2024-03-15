@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
+
 import Sidebar from '../SideBar/Sidebar';
 import { adminData } from '../SideBar/sidebarData';
 import { MdDelete } from "react-icons/md"
 import { FaEdit, FaInfoCircle } from "react-icons/fa"
 import EmployeeDeleteModal from '../MinorComponents/EmployeeDeleteModal';
+import EditEmployeeModal from '../MinorComponents/AdminPageModals/EditEmployeeModal';
 
 
 
 function AdminEmployees() {
   const [employeeData, setEmployeeData] = useState([]);
+  // hook to add Employee modal
+  const [addEmployeeModal, setAddEmployeeModal] = useState(false)
+  // hook to open delete modal
+  const [openModal, setOpenModal] = useState(false)
+  //hook to open edit Modal
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
+  const [editEmployee, setEditEmployee] = useState(null)
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +36,25 @@ function AdminEmployees() {
     fetchData();
   }, []); 
 
-  const [openModal, setOpenModal] = useState(false)
 
+  const handleDelete = (id) => {
+    if (id > 0)
+    {
+      const deleteData = employeeData.filter(employee => employee.id !== id)
+      setEmployeeData(deleteData)
+    }
+  }
+
+  const handleEdit = (id) => {
+    if (id > 0)
+    {
+      const editData = employeeData.filter(employee => employee.id === id)
+      setEmployeeData(editData)
+    }
+  }
+  
+
+  
   
 
   return (
@@ -48,20 +77,20 @@ function AdminEmployees() {
             <span className="w-[20%]">ID</span>
             <span className="w-[30%]">Name</span>
             <span className="w-[20%]">Department</span>
-            <span className="w-[20%]"></span>
+            <span className="w-[20%]">Actions</span>
           </div>
 
           
           {employeeData.map((employee, index) => (
-            <div key={index} className='w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md'>
+            <div key={index} className='w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md hover:bg-[#ef2253] '>
               <span className="w-[10%]">{index + 1}</span>
               <span className="w-[20%]">{employee.id}</span>
               <span className="w-[30%]">{employee.firstname} {employee.lastName}</span>
               <span className="w-[20%]">{employee.department}</span>
               <span className="w-[20%] flex items-center justify-between ">
-                <span className='hover:cursor-pointer'><FaEdit /></span>
+                <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee.id) } } ><FaEdit /></span>
                 <span className='hover:cursor-pointer'><FaInfoCircle /></span>
-                <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true)}}><MdDelete /></span>
+                <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true); setSelectedEmployeeId(employee.id)}}><MdDelete /></span>
               </span>
               
             </div>
@@ -71,7 +100,9 @@ function AdminEmployees() {
         
       </div>
 
-    { openModal && <EmployeeDeleteModal closeModal={setOpenModal}/>}
+    { openModal && <EmployeeDeleteModal closeModal={setOpenModal} employeeId={selectedEmployeeId} handleDelete={handleDelete}/>}
+
+    { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />}
     </div>
     </>
   );
