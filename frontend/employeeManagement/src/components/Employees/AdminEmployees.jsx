@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md"
 import { FaEdit, FaInfoCircle } from "react-icons/fa"
 import EmployeeDeleteModal from '../MinorComponents/EmployeeDeleteModal';
 import EditEmployeeModal from '../MinorComponents/AdminPageModals/EditEmployeeModal';
+import AddEmployeeModal from '../MinorComponents/AdminPageModals/AddEmployeeModal';
 
 
 
@@ -45,13 +46,41 @@ function AdminEmployees() {
     }
   }
 
-  const handleEdit = (id) => {
-    if (id > 0)
-    {
-      const editData = employeeData.filter(employee => employee.id === id)
-      setEmployeeData(editData)
-    }
-  }
+  // const handleEdit = (updatedEmployee) => {
+  //   if (updatedEmployee.id > 0)
+  //   {
+  //     const updatedEmployeeData = employeeData.map((employee) =>
+  //       employee.id === updatedEmployee.id ? updatedEmployee : employee
+  //     );
+  //     setEmployeeData(updatedEmployeeData)
+  //   }
+  // }
+  const handleEdit = (updatedEmployee) => {
+    // Send a PUT request to update the employee's details
+    fetch(`/api/employees/${updatedEmployee.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedEmployee),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update employee details');
+        }
+        // If the request is successful, update the employee details in the state
+        // Assuming employeeData and setEmployeeData are available in the component's scope
+        const updatedEmployeeData = employeeData.map((employee) =>
+          employee.id === updatedEmployee.id ? updatedEmployee : employee
+        );
+        setEmployeeData(updatedEmployeeData);
+        setOpenEditModal(false); // Close the modal after successful update
+      })
+      .catch((error) => {
+        console.error('Error updating employee details:', error);
+      });
+  };
+  
   
 
   
@@ -67,7 +96,10 @@ function AdminEmployees() {
 
         <div className='flex items-center justify-between w-[100%] mr-[10px] '>
           <label className='text-white text-xl p-[10px]'>Employees Overview</label>
-          <button className='bg-[#231e3b] hover:bg-[#ef2253] cursor-pointer border-2 rounded-md border-solid border-gray-500 shadow-md p-[5px] '>Add Employee</button>
+          <button className='bg-[#231e3b] hover:bg-[#ef2253] cursor-pointer border-2 rounded-md border-solid border-gray-500 shadow-md p-[5px] '
+          onClick={() => {setOpenEditModal(true)}}>
+            Add Employee
+          </button>
         </div>
 
 
@@ -85,10 +117,10 @@ function AdminEmployees() {
             <div key={index} className='w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md hover:bg-[#ef2253] '>
               <span className="w-[10%]">{index + 1}</span>
               <span className="w-[20%]">{employee.id}</span>
-              <span className="w-[30%]">{employee.firstname} {employee.lastName}</span>
+              <span className="w-[30%]">{employee.firstName} {employee.lastName}</span>
               <span className="w-[20%]">{employee.department}</span>
               <span className="w-[20%] flex items-center justify-between ">
-                <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee.id) } } ><FaEdit /></span>
+                <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee) } } ><FaEdit /></span>
                 <span className='hover:cursor-pointer'><FaInfoCircle /></span>
                 <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true); setSelectedEmployeeId(employee.id)}}><MdDelete /></span>
               </span>
@@ -103,6 +135,9 @@ function AdminEmployees() {
     { openModal && <EmployeeDeleteModal closeModal={setOpenModal} employeeId={selectedEmployeeId} handleDelete={handleDelete}/>}
 
     { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />}
+
+    { openEditModal && <AddEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit}  />}
+
     </div>
     </>
   );

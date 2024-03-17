@@ -1,8 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AddEmployeeModal = ({ closeModal }) => {
+const AddEmployeeModal = ({ closeModal, handleEdit, employee }) => {
   
+  
+  useEffect(() => {
+    setFirstName(employee.firstName || "");
+    setLastName(employee.lastName || "");
+    setDepartment(employee.department || "");
+    setPhone(employee.phone || "");
+    setRole(employee.role || "");
+    setLocation(employee.location || "");
+    setAge(employee.age || "");
+    setAddress(employee.address || "");
+    setDateOfJoining(employee.dateOfJoining || "");
+  }, [employee]);
 
+
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [department, setDepartment] = useState("")
+  const [phone, setPhone] = useState("")
+  const [role, setRole] = useState("")
+  const [location, setLocation] = useState("")
+  const [age, setAge] = useState("")    
+  const [address, setAddress] = useState("")
+  const [dateOfJoining, setDateOfJoining] = useState("")
+
+  const addEmployee = () => {
+    
+    const updatedEmployee = {
+      ...employee,
+      firstName : firstName,
+      lastName : lastName,
+      department : department,
+      phone : phone,
+      role : role,
+      location : location,
+      age : age,
+      address : address,
+      dateofjoining : dateOfJoining,
+    }
+
+    handleEdit(updatedEmployee);
+    closeModal(false);
+
+  };
 
   
 
@@ -39,9 +81,7 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='employeeId'
               name='employeeId'
-              value={employee}
-              disabled
-              className='border border-gray-300 rounded-md p-2'
+              className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
 
@@ -53,7 +93,8 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='firstName'
               name='firstName'
-              value={employee.firstname}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
@@ -66,7 +107,8 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='lastName'
               name='lastName'
-              defaultValue={employee.lastName}
+              defaultValue={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black '
             />
           </div>
@@ -79,7 +121,8 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='role'
               name='role'
-              defaultValue={employee.role}
+              defaultValue={""}
+              onChange={(e) => setRole(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
@@ -92,7 +135,8 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='location'
               name='location'
-              defaultValue={employee.location}
+              defaultValue={location}
+              onChange={(e) => setLocation(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
@@ -105,7 +149,8 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='text'
               id='address'
               name='address'
-              defaultValue={employee.address}
+              defaultValue={address}
+              onChange={(e) => setAddress(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
@@ -118,7 +163,36 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='number'
               id='age'
               name='age'
-              defaultValue={employee.age}
+              defaultValue={age}
+              onChange={(e) => setAge(e.target.value)}
+              className='border border-gray-300 rounded-md p-2 text-black'
+            />
+          </div>
+
+          <div className='flex flex-col mb-4'>
+            <label htmlFor='age' className='mb-1'>
+              Phone
+            </label>
+            <input
+              type='number'
+              id='phone'
+              name='phone'
+              defaultValue={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className='border border-gray-300 rounded-md p-2 text-black'
+            />
+          </div>
+
+          <div className='flex flex-col mb-4'>
+            <label htmlFor='age' className='mb-1'>
+              Department
+            </label>
+            <input
+              type='text'
+              id='department'
+              name='department'
+              defaultValue={department}
+              onChange={(e) => setDepartment(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
@@ -131,14 +205,15 @@ const AddEmployeeModal = ({ closeModal }) => {
               type='date'
               id='dateOfJoining'
               name='dateOfJoining'
-              defaultValue={employee.dateofjoining}
+              onChange={(e) => setDateOfJoining(e.target.value)}
               className='border border-gray-300 rounded-md p-2 text-black'
             />
           </div>
 
           <button
-            type='submit'
-            className='w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 transition duration-300' onClick={() => closeModal(false)}
+            type='button'
+            
+            className='w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 transition duration-300' onClick={() => addEmployee()}
           >
             Add Employee
           </button>

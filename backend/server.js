@@ -1,4 +1,5 @@
 import express from "express";
+import fs from 'fs'
 
 const app = express()
 
@@ -7,196 +8,117 @@ app.get('/', (req, res) => {
 })
 
 
+ // Middleware to parse JSON and URL-encoded request bodies
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
+
+
  app.get('/api/locations', (req, res) => {
-    const locations = [ 'Malir','Bazaar','k3','k9']
+    const locations = [ 'Malir','Bazaar','saddar','k9']
     res.send(locations)
  })
 
+ const employees = [
+    {
+        id: 100001,
+        firstName : 'Araib',
+        lastName : 'Khan',
+        department: 'accounts',
+        phone: '034514081947',
+        role:'supervisor',
+        location: 'Malir',
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '2023-03-27'
+    },
+    {
+        id: 100002,
+        firstName: 'Ahmed',
+        lastName : 'Ayaz',
+        department: 'supervision',
+        phone: '034514081947',
+        role:'supervisor',
+        location: 'Saddar',
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '3/27/2023'
+    },
+    {
+        id: 100003,
+        firstName: 'Tahir',
+        lastName : 'Zamman',
+        department: 'supervision',
+        phone: '034514081947',
+        role:'supervisor',
+        location: 'k-9',
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '3/27/2023'
+    },
+    {
+        id: 100004,
+        firstName: 'Jawad',
+        lastName : 'Ahmed',
+        department: 'supervision',
+        phone: '034514081947',
+        role:'supervisor',
+        location:"Malir",
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '3/27/2023'
+    },
+    {
+        id: 100005,
+        firstName: 'Abdullah',
+        lastName : 'Shafiq',
+        department: 'supervision',
+        phone: '034514081947',
+        role:'supervisor',
+        location: 'Saddar',
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '3/27/2023'
+    },
+    {
+        id: 100006,
+        firstName: 'Saad',
+        lastName : 'Talib',
+        department: 'supervision',
+        phone: '034514081947',
+        role:'supervisor',
+        location: 'Bazaar',
+        age: 30,
+        address:'Block B-34 gulshan',
+        dateofjoining: '3/27/2023'
+    },
+]
+
+
  app.get('/api/employees', (req, res) => {
-    const employees = [
-        {
-            id: 123515,
-            firstname : 'Araib',
-            lastName : 'Khan',
-            department: 'accounts',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123512,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123351,
-            firstname: 'Araib',
-            lastName : '',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123651,
-            firstname: '',
-            lastName : 'Araib',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location:"Malir",
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 126352,
-            firstname: 'Muhammad',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123853,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123154,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123155,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123136,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123156,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123157,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123158,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 189679,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 123181,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-        {
-            id: 128991,
-            firstname: 'Araib',
-            lastName : 'Niazi',
-            department: 'supervision',
-            phone: '034514081947',
-            role:'supervisor',
-            location: 'Saddar',
-            age: 30,
-            address:'Block B-34 gulshan',
-            dateofjoining: '3/27/2023'
-        },
-    ]
     res.send(employees)
  })
+
+ app.put('/api/employees/:id', (req, res) => {
+    const id = req.params.id;
+    const updatedEmployee = req.body;
+
+    const index = employees.findIndex(employee => employee.id === parseInt(id));
+    if (index !== -1) {
+        employees[index] = updatedEmployee;
+        res.send('Employee details updated successfully');
+        
+    } else {
+        res.status(404).send('Employee not found');
+    }
+ })
+
+ // Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
+
 const port = process.env.PORT || 3000
 
 app.listen( port, () => {
