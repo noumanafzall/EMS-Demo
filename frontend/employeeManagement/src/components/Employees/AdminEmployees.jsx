@@ -81,7 +81,11 @@ function AdminEmployees() {
       });
   };
   
-  
+  const handleAdd = (newEmployee) => {
+    
+    setEmployeeData([...employeeData,newEmployee])
+    
+  }
 
   
   
@@ -97,7 +101,7 @@ function AdminEmployees() {
         <div className='flex items-center justify-between w-[100%] mr-[10px] '>
           <label className='text-white text-xl p-[10px]'>Employees Overview</label>
           <button className='bg-[#231e3b] hover:bg-[#ef2253] cursor-pointer border-2 rounded-md border-solid border-gray-500 shadow-md p-[5px] '
-          onClick={() => {setOpenEditModal(true)}}>
+          onClick={() => {setAddEmployeeModal(true)}}>
             Add Employee
           </button>
         </div>
@@ -136,7 +140,7 @@ function AdminEmployees() {
 
     { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />}
 
-    { openEditModal && <AddEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit}  />}
+    { addEmployeeModal && <AddEmployeeModal closeModal={setAddEmployeeModal} handleAdd={handleAdd}  />}
 
     </div>
     </>
