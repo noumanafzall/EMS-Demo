@@ -2,20 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const AddEmployeeModal = ({ closeModal, handleAdd, employee }) => {
   
-  useEffect(() => {
-    if (employee) {
-      setEmpId(employee.id || "");
-      setFirstName(employee.firstName || "");
-      setLastName(employee.lastName || "");
-      setDepartment(employee.department || "");
-      setPhone(employee.phone || "");
-      setRole(employee.role || "");
-      setLocation(employee.location || "");
-      setAge(employee.age || "");
-      setAddress(employee.address || "");
-      setDateOfJoining(employee.dateofjoining || "");
-    }
-  }, [employee]);
+  
 
   const [empId, setEmpId] = useState("")
   const [firstName, setFirstName] = useState("")

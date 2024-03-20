@@ -7,19 +7,28 @@ import { FaEdit, FaInfoCircle } from "react-icons/fa"
 import EmployeeDeleteModal from '../MinorComponents/EmployeeDeleteModal';
 import EditEmployeeModal from '../MinorComponents/AdminPageModals/EditEmployeeModal';
 import AddEmployeeModal from '../MinorComponents/AdminPageModals/AddEmployeeModal';
+import DetailsEmployeeModal from '../MinorComponents/AdminPageModals/DetailsEmployeeModal'
 
 
 
 function AdminEmployees() {
   const [employeeData, setEmployeeData] = useState([]);
+
   // hook to add Employee modal
   const [addEmployeeModal, setAddEmployeeModal] = useState(false)
+
   // hook to open delete modal
   const [openModal, setOpenModal] = useState(false)
+
   //hook to open edit Modal
   const [openEditModal, setOpenEditModal] = useState(false)
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
   const [editEmployee, setEditEmployee] = useState(null)
+
+  // hook to open Employee Details?Info Modal
+  const [detailsModal, setDetailsModal] = useState(false)
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+
 
 
 
@@ -125,8 +134,11 @@ function AdminEmployees() {
               <span className="w-[20%]">{employee.department}</span>
               <span className="w-[20%] flex items-center justify-between ">
                 <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee) } } ><FaEdit /></span>
-                <span className='hover:cursor-pointer'><FaInfoCircle /></span>
+
+                <span className='hover:cursor-pointer' onClick={() => {setDetailsModal(true); setSelectedEmployee(employee)}} ><FaInfoCircle /></span>
+
                 <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true); setSelectedEmployeeId(employee.id)}}><MdDelete /></span>
+                
               </span>
               
             </div>
@@ -141,6 +153,8 @@ function AdminEmployees() {
     { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />}
 
     { addEmployeeModal && <AddEmployeeModal closeModal={setAddEmployeeModal} handleAdd={handleAdd}  />}
+
+    { detailsModal && <DetailsEmployeeModal  closeModal={setDetailsModal} employee={selectedEmployee} />}
 
     </div>
     </>
