@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AddEmployeeModal = ({ closeModal, handleAdd, employee }) => {
+const AddEmployeeModal = ({ closeModal, handleAdd, employeeData }) => {
   
   
 
@@ -18,7 +18,7 @@ const AddEmployeeModal = ({ closeModal, handleAdd, employee }) => {
   const addEmployee = () => {
     
     const newEmployee = {
-      id : empId,
+      id : employeeData.length == 0 ? 10001 : employeeData[employeeData.length - 1].id + 1,
       firstName : firstName,
       lastName : lastName,
       department : department,
@@ -35,7 +35,6 @@ const AddEmployeeModal = ({ closeModal, handleAdd, employee }) => {
     closeModal(false);
 
   };
-
   
 
   return (

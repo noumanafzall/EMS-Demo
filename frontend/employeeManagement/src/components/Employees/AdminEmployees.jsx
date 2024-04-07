@@ -5,9 +5,10 @@ import { adminData } from '../SideBar/sidebarData';
 import { MdDelete } from "react-icons/md"
 import { FaEdit, FaInfoCircle } from "react-icons/fa"
 import EmployeeDeleteModal from '../MinorComponents/EmployeeDeleteModal';
-import EditEmployeeModal from '../MinorComponents/AdminPageModals/EditEmployeeModal';
-import AddEmployeeModal from '../MinorComponents/AdminPageModals/AddEmployeeModal';
-import DetailsEmployeeModal from '../MinorComponents/AdminPageModals/DetailsEmployeeModal'
+import EditEmployeeModal from '../MinorComponents/Modal/EditEmployeeModal';
+import AddEmployeeModal from '../MinorComponents/Modal/AddEmployeeModal';
+import DetailsEmployeeModal from '../MinorComponents/Modal/DetailsEmployeeModal'
+import UniversalModal from '../MinorComponents/Modal/UniversalModal';
 
 
 
@@ -30,14 +31,12 @@ function AdminEmployees() {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/employees'); 
         const data = await response.json();
-        setEmployeeData(data);
+        // setEmployeeData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -100,65 +99,78 @@ function AdminEmployees() {
   
 
   return (
-    <>
-    <div className='flex bg-gradient-to-br #231e3b from-[#231e3b] via-[#4d3874] to-[#b33854] h-[100vh]'>
+
+    <div className='flex bg-gradient-to-br from-[#b33854] via-[#a52140] to-[#231e3b] h-[100vh]'>
 
       <Sidebar list={adminData} role='Admin' />
 
-      <div className='h-[100vh] w-[80%] flex flex-col justify-center items-center rounded-r-md text-white'>
+      <div className='flex flex-col w-[80%] h-[100%] '>
 
-        <div className='flex items-center justify-between w-[100%] mr-[10px] '>
-          <label className='text-white text-xl p-[10px]'>Employees Overview</label>
-          <button className='bg-[#231e3b] hover:bg-[#ef2253] cursor-pointer border-2 rounded-md border-solid border-gray-500 shadow-md p-[5px] '
-          onClick={() => {setAddEmployeeModal(true)}}>
-            Add Employee
-          </button>
+        <div className='flex items-center justify-between w-[100%] h-[15%] text-white bg-[#231e3b] border-b-2 border-[#231e3b]  p-[5px] '>
+            <h2 className='text-white text-3xl font-semibold'>Employees Overview</h2>
+            <button className='w-56 h-12 bg-[#231e3b] hover:bg-[#ef2253] cursor-pointer border-2 rounded-md border-solid border-gray-500 shadow-md p-[5px] '
+            onClick={() => {setAddEmployeeModal(true)}}>
+              Add Employee
+            </button>
         </div>
 
+        <div className='h-[85%] flex flex-col justify-center items-center rounded-r-md text-white m-[10px]'>
 
-        <div id='employeesData' className='bg-[#231e3b] h-[90%] w-[100%] flex flex-col border-2 rounded-md border-solid border-gray-500 shadow-md items-center overflow-y-auto '>
-          <div className='bg-[#ef2253] w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] mb-[20px] p-[5px] border-2 rounded-md border-solid border-gray-500 shadow-md sticky top-0 '>
-            <span className="w-[10%]">S.#</span>
-            <span className="w-[20%]">ID</span>
-            <span className="w-[30%]">Name</span>
-            <span className="w-[20%]">Department</span>
-            <span className="w-[20%]">Actions</span>
-          </div>
-
-          
-          {employeeData.map((employee, index) => (
-            <div key={index} className='w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md hover:bg-[#ef2253] '>
-              <span className="w-[10%]">{index + 1}</span>
-              <span className="w-[20%]">{employee.id}</span>
-              <span className="w-[30%]">{employee.firstName} {employee.lastName}</span>
-              <span className="w-[20%]">{employee.department}</span>
-              <span className="w-[20%] flex items-center justify-between ">
-                <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee) } } ><FaEdit /></span>
-
-                <span className='hover:cursor-pointer' onClick={() => {setDetailsModal(true); setSelectedEmployee(employee)}} ><FaInfoCircle /></span>
-
-                <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true); setSelectedEmployeeId(employee.id)}}><MdDelete /></span>
-                
-              </span>
-              
+          <div id='employeesData' className='bg-[#231e3b] h-[90%] w-[100%] flex flex-col border-2 rounded-md border-solid border-gray-500 shadow-md items-center overflow-y-auto mx-[10px] '>
+            <div className='bg-[#ef2253] w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] mb-[20px] p-[5px] border-2 rounded-md border-solid border-gray-500 shadow-md sticky top-0 '>
+              <span className="w-[10%]">S.#</span>
+              <span className="w-[20%]">ID</span>
+              <span className="w-[30%]">Name</span>
+              <span className="w-[20%]">Department</span>
+              <span className="w-[20%]">Actions</span>
             </div>
-          ))}
 
-        </div> 
-        
+            
+            {employeeData.map((employee, index) => (
+              <div key={index} className='w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md hover:bg-[#ef2253] '>
+                <span className="w-[10%]">{index + 1}</span>
+                <span className="w-[20%]">{employee.id}</span>
+                <span className="w-[30%]">{employee.firstName} {employee.lastName}</span>
+                <span className="w-[20%]">{employee.department}</span>
+                <span className="w-[20%] flex items-center justify-between ">
+                  <span className='hover:cursor-pointer' onClick={() => {setOpenEditModal(true); setEditEmployee(employee) } } ><FaEdit /></span>
+
+                  <span className='hover:cursor-pointer' onClick={() => {setDetailsModal(true); setSelectedEmployee(employee)}} ><FaInfoCircle /></span>
+
+                  <span className='hover:cursor-pointer' onClick={() => {setOpenModal(true); setSelectedEmployeeId(employee.id)}}><MdDelete /></span>
+                  
+                </span>
+                
+              </div>
+            ))}
+
+          </div> 
+          
+        </div>
+
       </div>
 
     { openModal && <EmployeeDeleteModal closeModal={setOpenModal} employeeId={selectedEmployeeId} handleDelete={handleDelete}/>}
 
-    { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />}
+    {/* { openEditModal && <EditEmployeeModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} />} */}
 
-    { addEmployeeModal && <AddEmployeeModal closeModal={setAddEmployeeModal} handleAdd={handleAdd}  />}
+    { addEmployeeModal && <AddEmployeeModal closeModal={setAddEmployeeModal} handleAdd={handleAdd} employeeData={employeeData} />}
 
-    { detailsModal && <DetailsEmployeeModal  closeModal={setDetailsModal} employee={selectedEmployee} />}
+    {/* { detailsModal && <DetailsEmployeeModal  closeModal={setDetailsModal} employee={selectedEmployee} />} */}
+
+    {
+      detailsModal && <UniversalModal closeModal={setDetailsModal} employee={selectedEmployee} isDisabled={true} submitBtnText={"Close"}/>
+    }
+
+
+
+    {
+      openEditModal && <UniversalModal closeModal={setOpenEditModal} employee={editEmployee} handleEdit={handleEdit} isDisabled={false} submitBtnText={"Confirm Changes"}/>
+    }
 
     </div>
-    </>
-  );
+
+  )
 }
 
 export default AdminEmployees;

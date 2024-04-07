@@ -21,7 +21,7 @@ const employees = [
         location: 'Saddar',
         age: 30,
         address:'Block B-34 gulshan',
-        dateofjoining: '3/27/2023'
+        dateofjoining: '2023-03-27'
     },
     {
         id: 100003,
@@ -33,7 +33,7 @@ const employees = [
         location: 'k-9',
         age: 30,
         address:'Block B-34 gulshan',
-        dateofjoining: '3/27/2023'
+        dateofjoining: '2023-03-27'
     },
     {
         id: 100004,
@@ -45,7 +45,7 @@ const employees = [
         location:"Malir",
         age: 30,
         address:'Block B-34 gulshan',
-        dateofjoining: '3/27/2023'
+        dateofjoining: '2023-03-27'
     },
     {
         id: 100005,
@@ -57,7 +57,7 @@ const employees = [
         location: 'Saddar',
         age: 30,
         address:'Block B-34 gulshan',
-        dateofjoining: '3/27/2023'
+        dateofjoining: '2023-03-27'
     },
     {
         id: 100006,
@@ -69,6 +69,8 @@ const employees = [
         location: 'Bazaar',
         age: 30,
         address:'Block B-34 gulshan',
-        dateofjoining: '3/27/2023'
+        dateofjoining: '2023-03-27'
     },
 ]
+
+export {employees}
