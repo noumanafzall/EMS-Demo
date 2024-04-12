@@ -36,7 +36,7 @@ function AdminEmployees() {
       try {
         const response = await fetch('/api/employees'); 
         const data = await response.json();
-        // setEmployeeData(data);
+        setEmployeeData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -114,10 +114,10 @@ function AdminEmployees() {
             </button>
         </div>
 
-        <div className='h-[85%] flex flex-col justify-center items-center rounded-r-md text-white m-[10px]'>
+        <div id='employee-div' className='h-[85%] flex flex-col justify-center items-center rounded-r-md text-white p-[10px]'>
 
-          <div id='employeesData' className='bg-[#231e3b] h-[90%] w-[100%] flex flex-col border-2 rounded-md border-solid border-gray-500 shadow-md items-center overflow-y-auto mx-[10px] '>
-            <div className='bg-[#ef2253] w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] mb-[20px] p-[5px] border-2 rounded-md border-solid border-gray-500 shadow-md sticky top-0 '>
+          <div id='employeesData' className='bg-[#231e3b] h-[90%] w-[100%] flex flex-col border-2 rounded-md border-solid border-gray-500 shadow-md items-center overflow-y-auto px-[30px]'>
+            <div className='bg-[#ef2253] w-[98%] h-[30px] flex items-center justify-between content-center mt-[10px] mb-[10px] p-[5px] border-2 rounded-md border-solid border-gray-500 shadow-md sticky top-0 '>
               <span className="w-[10%]">S.#</span>
               <span className="w-[20%]">ID</span>
               <span className="w-[30%]">Name</span>

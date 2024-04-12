@@ -14,7 +14,7 @@ const AddEmployeeModal = ({ closeModal, handleAdd, employeeData }) => {
   const [age, setAge] = useState("")    
   const [address, setAddress] = useState("")
   const [dateOfJoining, setDateOfJoining] = useState("")
-
+ 
   const addEmployee = () => {
     
     const newEmployee = {

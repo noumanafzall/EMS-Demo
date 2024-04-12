@@ -60,7 +60,7 @@ function AdminDashboard() {
             <div className='w-[100%] h-[150px] mb-1'>
               
               <table className='h-[100%] w-[100%] flex flex-col items-center' >
-                <thead className=' w-[100%] h-[30px] flex items-center content-center mt-[10px] mb-[5px] p-[10px] sticky top-0 '>
+                <thead className=' w-[100%] h-[30px] flex items-center content-center mr-[10.5px] mt-[10px] mb-[5px] p-[10px] sticky top-0 '>
                   <tr className='bg-[#5a50f1] w-[100%] h-[30px] flex items-center justify-center content-center mt-[10px] p-[10px] border-2 rounded-md border-solid border-gray-500 shadow-md' >
                    <td className='w-1/3'>Company</td>
                    <td className='w-1/3'>Value</td>
@@ -118,7 +118,7 @@ function AdminDashboard() {
                   <h2 className='text-xl font-semibold'>Araib Khan Niazi</h2>
                   <label>Manager</label>
                 </div>
-                <BsThreeDotsVertical className='text-3xl' />
+                <BsThreeDotsVertical  className='text-3xl hover:cursor-pointer' />
               </div>
 
               <div className='flex items-center justify-evenly h-1/3 border rounded-lg text-white bg-[#231e3b] shadow-xl m-[10px]'>
@@ -127,7 +127,7 @@ function AdminDashboard() {
                   <h2 className='text-xl font-semibold'>Sharjeel Khan</h2>
                   <label>Senior Supervisor</label>
                 </div>
-                <BsThreeDotsVertical className='text-3xl' />
+                <BsThreeDotsVertical className='text-3xl hover:cursor-pointer' />
               </div>
 
               <div className='flex items-center justify-evenly h-1/3 border rounded-lg text-white bg-[#231e3b] shadow-xl m-[10px]'>
